@@ -10,7 +10,7 @@ namespace Core.Entities
         public int? Hide { get; set; }
         public Day Day { get; set; }
         public Information Information { get; set; }
-
         public Route Route { get; set; }
+        public int RouteId { get; set; }
     }
 }

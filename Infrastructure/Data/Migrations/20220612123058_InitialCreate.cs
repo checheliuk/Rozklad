@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Infrastructure.Data.Migrations
 {
-    public partial class PostGresinitial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -71,7 +71,8 @@ namespace Infrastructure.Data.Migrations
                     DNote = table.Column<string>(type: "text", nullable: true),
                     MNote = table.Column<string>(type: "text", nullable: true),
                     SchedulesFilePath = table.Column<string>(type: "text", nullable: true),
-                    DateLastUpdateSchedules = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    DateLastUpdateSchedules = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    Visible = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -196,7 +197,7 @@ namespace Infrastructure.Data.Migrations
                     Transport = table.Column<int>(type: "integer", nullable: false),
                     Order = table.Column<int>(type: "integer", nullable: false),
                     ReverseId = table.Column<int>(type: "integer", nullable: true),
-                    Visible = table.Column<bool>(type: "boolean", nullable: false),
+                    Visible = table.Column<int>(type: "integer", nullable: false),
                     CityId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -217,7 +218,7 @@ namespace Infrastructure.Data.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: true),
                     Translate = table.Column<string>(type: "text", nullable: true),
-                    CityId = table.Column<int>(type: "integer", nullable: true)
+                    CityId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -226,7 +227,8 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_Stations_Cites_CityId",
                         column: x => x.CityId,
                         principalTable: "Cites",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -241,7 +243,7 @@ namespace Infrastructure.Data.Migrations
                     Hide = table.Column<int>(type: "integer", nullable: true),
                     Day = table.Column<int>(type: "integer", nullable: false),
                     Information = table.Column<int>(type: "integer", nullable: false),
-                    RouteId = table.Column<int>(type: "integer", nullable: true)
+                    RouteId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -250,7 +252,8 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_Schedules_Routes_RouteId",
                         column: x => x.RouteId,
                         principalTable: "Routes",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -264,8 +267,8 @@ namespace Infrastructure.Data.Migrations
                     End = table.Column<TimeSpan>(type: "interval", nullable: false),
                     Time = table.Column<TimeSpan>(type: "interval", nullable: false),
                     Day = table.Column<int>(type: "integer", nullable: false),
-                    StationId = table.Column<int>(type: "integer", nullable: true),
-                    RouteId = table.Column<int>(type: "integer", nullable: true)
+                    StationId = table.Column<int>(type: "integer", nullable: false),
+                    RouteId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -274,12 +277,14 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_Intervals_Routes_RouteId",
                         column: x => x.RouteId,
                         principalTable: "Routes",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Intervals_Stations_StationId",
                         column: x => x.StationId,
                         principalTable: "Stations",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

@@ -15,7 +15,7 @@ var app = builder.Build();
 
 using(var scope = app.Services.CreateScope())
 {
-    await Scope.MigrateDatabase(scope);
+    await Scope.MigrateDatabase(scope, app.Environment);
 }
 
 // Configure the HTTP request pipeline.

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220611163835_PostGres initial")]
-    partial class PostGresinitial
+    [Migration("20220612123058_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,6 +83,9 @@ namespace Infrastructure.Data.Migrations
                     b.Property<string>("Translate")
                         .HasColumnType("text");
 
+                    b.Property<int>("Visible")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.ToTable("Cites");
@@ -105,13 +108,13 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("Order")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("RouteId")
+                    b.Property<int>("RouteId")
                         .HasColumnType("integer");
 
                     b.Property<TimeSpan>("Start")
                         .HasColumnType("interval");
 
-                    b.Property<int?>("StationId")
+                    b.Property<int>("StationId")
                         .HasColumnType("integer");
 
                     b.Property<TimeSpan>("Time")
@@ -155,8 +158,8 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("Transport")
                         .HasColumnType("integer");
 
-                    b.Property<bool>("Visible")
-                        .HasColumnType("boolean");
+                    b.Property<int>("Visible")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -185,7 +188,7 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("Period")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("RouteId")
+                    b.Property<int>("RouteId")
                         .HasColumnType("integer");
 
                     b.Property<int?>("Show")
@@ -209,7 +212,7 @@ namespace Infrastructure.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CityId")
+                    b.Property<int>("CityId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
@@ -425,11 +428,15 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.HasOne("Core.Entities.Route", "Route")
                         .WithMany("Intervals")
-                        .HasForeignKey("RouteId");
+                        .HasForeignKey("RouteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Core.Entities.Station", "Station")
                         .WithMany("Intervals")
-                        .HasForeignKey("StationId");
+                        .HasForeignKey("StationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Route");
 
@@ -449,7 +456,9 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.HasOne("Core.Entities.Route", "Route")
                         .WithMany()
-                        .HasForeignKey("RouteId");
+                        .HasForeignKey("RouteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Route");
                 });
@@ -458,7 +467,9 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.HasOne("Core.Entities.City", "City")
                         .WithMany("Stations")
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("City");
                 });

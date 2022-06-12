@@ -1,0 +1,201 @@
+[
+    {
+        "Id": 1,
+        "Name": "вул. Лугова",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 2,
+        "Name": "вул. Степана Тимошенка",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 3,
+        "Name": "Ринок 'Мрія'",
+        "Translate": "",
+        "CityId": 1
+    },
+
+    {
+        "Id": 4,
+        "Name": "Вінницький інструментальний завод",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 5,
+        "Name": "Промислова",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 6,
+        "Name": "вул. Чехова (на вимогу)",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 7,
+        "Name": "вул. Олега Антонова",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 8,
+        "Name": "Вінницький авіаційний завод",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 9,
+        "Name": "вул. Чехова",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 10,
+        "Name": "вул. Волошкова",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 11,
+        "Name": "вул. Максима Шимка",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 12,
+        "Name": "вул. Зої Ткаченко",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 13,
+        "Name": "вул. Привокзальна",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 14,
+        "Name": "вул. Олександра Довженка",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 15,
+        "Name": "вул. Замостянська",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 16,
+        "Name": "Музей Коцюбинського",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 17,
+        "Name": "Ім. Героїв Чорнобиля (Центральний автовокзал)",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 18,
+        "Name": "вул. Стеценка",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 19,
+        "Name": "вул. Стрілецька",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 20,
+        "Name": "Міська клінічна лікарня швидкої медичної допомоги",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 21,
+        "Name": "вул. Грибоєдова",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 22,
+        "Name": "вул. Гонти",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 23,
+        "Name": "вул. Станіславського",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 24,
+        "Name": "Школа-коледж №29",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 25,
+        "Name": "Меморіал Визволення",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 26,
+        "Name": "Зоопарк",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 27,
+        "Name": "МЗЗ",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 28,
+        "Name": "Завод 'Аграна Фрут'",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 29,
+        "Name": "вул. Енергетична",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 30,
+        "Name": "Елеватормлинмонтаж",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 31,
+        "Name": "вул. Батозька",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 32,
+        "Name": "ЦПТО №1",
+        "Translate": "",
+        "CityId": 1
+    },
+    {
+        "Id": 33,
+        "Name": "Мікрорайон ВПЗ",
+        "Translate": "",
+        "CityId": 1
+    }
+]

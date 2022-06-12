@@ -1,0 +1,22 @@
+[
+    {
+        "Id": 1,
+        "Name": "ВПЗ - Лугова",
+        "Translate": "ВПЗ - Лугова",
+        "Number": "1",
+        "Transport": 2,
+        "Order": 1,
+        "ReverseId": 2,
+        "Visible": 1
+    },
+    {
+        "Id": 2,
+        "Name": "Лугова - ВПЗ",
+        "Translate": "Лугова - ВПЗ",
+        "Number": "1",
+        "Transport": 2,
+        "Order": 2,
+        "ReverseId": 1,
+        "Visible": 2
+    }
+]
