@@ -3,6 +3,5 @@ bin
 publish
 wwwroot
 appsettings.json
-appsettings.Development.json
 *.db
 *.rdb

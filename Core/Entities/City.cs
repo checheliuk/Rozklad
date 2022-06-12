@@ -21,5 +21,8 @@ namespace Core.Entities
         public string MNote { get; set; } 
         public string SchedulesFilePath { get; set; }
         public DateTime? DateLastUpdateSchedules { get; set; }
+
+        public ICollection<Route> Routes { get; set; }
+        public ICollection<Station> Stations { get; set; }
     }
 }
