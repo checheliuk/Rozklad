@@ -1,4 +1,6 @@
+using API.Dtos;
 using AutoMapper;
+using Core.Entities;
 
 namespace API.Helpers
 {
@@ -6,6 +8,7 @@ namespace API.Helpers
     {
         public MappingProfiles()
         {
+             CreateMap<City, CityDto>();
         }
     }
 }

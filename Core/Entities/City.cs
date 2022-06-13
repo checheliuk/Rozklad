@@ -6,6 +6,7 @@ namespace Core.Entities
     {
         public string Name { get; set; }
         public string Translate { get; set; }
+        public string Url { get; set; }
         public Period Period { get; set; }
         public Print Print { get; set; }
         public string GoogleMaps { get; set; }

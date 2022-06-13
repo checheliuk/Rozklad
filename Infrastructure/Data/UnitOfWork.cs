@@ -9,7 +9,11 @@ namespace Infrastructure.Data
         {
             _context = context;
         }
-
+        public ICityRepository CityRepository => new CityRepository(_context);
+        public IIntervalRepository IntervalRepository => new IntervalRepository(_context);
+        public IRouteRepository RouteRepository => new RouteRepository(_context);
+        public IScheduleRepository ScheduleRepository => new ScheduleRepository(_context);
+        public IStationRepository StationRepository => new StationRepository(_context);
         public async Task<bool> Complete()
         {
             return  await _context.SaveChangesAsync() > 0;
