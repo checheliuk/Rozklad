@@ -11,8 +11,9 @@ namespace Core.Entities
         public int Order { get; set; }
         public int? ReverseId { get; set; }
         public Visible Visible { get; set; }
-
         public City City { get; set; }
+        public int CityId { get; set; }
+        
         public ICollection<Interval> Intervals { get; set; }
     }
 }

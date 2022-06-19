@@ -8,7 +8,8 @@ namespace API.Helpers
     {
         public MappingProfiles()
         {
-             CreateMap<City, CityDto>();
+            CreateMap<City, CityDto>();
+            CreateMap<Core.Entities.Route, RouteDto>();
         }
     }
 }

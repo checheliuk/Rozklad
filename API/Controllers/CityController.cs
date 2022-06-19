@@ -1,16 +1,17 @@
 using API.Dtos;
 using AutoMapper;
 using Core.Entities;
+using Core.Entities.Enum;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    public class CitesController : BaseApiController
+    public class CityController : BaseApiController
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public CitesController(IUnitOfWork unitOfWork, IMapper mapper)
+        public CityController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
