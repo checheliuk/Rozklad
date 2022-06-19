@@ -1,4 +1,5 @@
 using Core.Entities;
+using Core.Entities.Enum;
 using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +17,12 @@ namespace Infrastructure.Data
         {
              _context.Stations.Add(station);
         }
-        
+
+        public async Task<IReadOnlyList<Station>> GetStationsByCityIdAsync(int id)
+        {
+            return await _context.Stations.Where(x => x.CityId == id).ToListAsync();
+        }
+
         public void Update(Station station)
         {
             _context.Entry(station).State = EntityState.Modified;
