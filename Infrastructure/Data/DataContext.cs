@@ -14,4 +14,5 @@ public class DataContext : IdentityDbContext
     public DbSet<Station> Stations { get; set; }
     public DbSet<Schedule> Schedules { get; set; }
     public DbSet<Interval> Intervals { get; set; }
+    public DbSet<Time> Times { get; set; }
 }

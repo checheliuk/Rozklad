@@ -1,0 +1,467 @@
+[
+    {
+        "Id": 1,
+        "IntervalId": 1,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 2,
+        "IntervalId": 2,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 3,
+        "IntervalId": 3,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 4,
+        "IntervalId": 4,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 5,
+        "IntervalId": 5,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000",
+        "Day": 1,
+        "StationId": 5,
+        "RouteId": 1
+    },
+    {
+        "Id": 6,
+        "IntervalId": 6,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 7,
+        "IntervalId": 7,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 8,
+        "IntervalId": 8,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 9,
+        "IntervalId": 9,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 10,
+        "IntervalId": 10,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 11,
+        "IntervalId": 11,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 12,
+        "IntervalId": 12,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 13,
+        "IntervalId": 13,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 14,
+        "IntervalId": 14,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 15,
+        "IntervalId": 15,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 16,
+        "IntervalId": 16,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 17,
+        "IntervalId": 17,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 18,
+        "IntervalId": 18,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 19,
+        "IntervalId": 19,
+        "Start": null,
+        "End": null,
+        "Value": "00:03:00.0000000"
+    },
+    {
+        "Id": 20,
+        "IntervalId": 20,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 21,
+        "IntervalId": 21,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 22,
+        "IntervalId": 22,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 23,
+        "IntervalId": 23,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 24,
+        "IntervalId": 24,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 25,
+        "IntervalId": 25,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 26,
+        "IntervalId": 26,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 27,
+        "IntervalId": 27,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 28,
+        "IntervalId": 28,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 29,
+        "IntervalId": 29,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 30,
+        "IntervalId": 30,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 31,
+        "IntervalId": 31,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 32,
+        "IntervalId": 32,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 33,
+        "IntervalId": 33,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 34,
+        "IntervalId": 34,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 35,
+        "IntervalId": 35,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 36,
+        "IntervalId": 36,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 37,
+        "IntervalId": 37,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 38,
+        "IntervalId": 38,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 39,
+        "IntervalId": 39,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 40,
+        "IntervalId": 40,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 41,
+        "IntervalId": 41,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 42,
+        "IntervalId": 42,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 43,
+        "IntervalId": 43,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 44,
+        "IntervalId": 44,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 45,
+        "IntervalId": 45,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 46,
+        "IntervalId": 46,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 47,
+        "IntervalId": 47,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 48,
+        "IntervalId": 48,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 49,
+        "IntervalId": 49,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 50,
+        "IntervalId": 50,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 51,
+        "IntervalId": 51,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 52,
+        "IntervalId": 52,
+        "Start": null,
+        "End": null,
+        "Value": "00:03:00.0000000"
+    },
+    {
+        "Id": 53,
+        "IntervalId": 53,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 54,
+        "IntervalId": 54,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 55,
+        "IntervalId": 55,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 56,
+        "IntervalId": 56,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 57,
+        "IntervalId": 57,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 58,
+        "IntervalId": 58,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 59,
+        "IntervalId": 59,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 60,
+        "IntervalId": 60,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 61,
+        "IntervalId": 61,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 62,
+        "IntervalId": 62,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 63,
+        "IntervalId": 63,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 64,
+        "IntervalId": 64,
+        "Start": null,
+        "End": null,
+        "Value": "00:01:00.0000000"
+    },
+    {
+        "Id": 65,
+        "IntervalId": 65,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    },
+    {
+        "Id": 66,
+        "IntervalId": 66,
+        "Start": null,
+        "End": null,
+        "Value": "00:02:00.0000000"
+    }   
+]

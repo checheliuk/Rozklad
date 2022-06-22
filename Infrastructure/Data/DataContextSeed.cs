@@ -46,7 +46,7 @@ public class DataContextSeed
             await context.SaveChangesAsync();
         }
 
-        if(!context.Schedules.Any())
+        if (!context.Schedules.Any())
         {
             var schedulesData = File.ReadAllText(path + @"Data/SeedData/schedules.json");
             var schedules = JsonSerializer.Deserialize<List<Schedule>>(schedulesData);
@@ -59,7 +59,7 @@ public class DataContextSeed
             await context.SaveChangesAsync();
         }
 
-        if(!context.Intervals.Any())
+        if (!context.Intervals.Any())
         {
             var intervalsData = File.ReadAllText(path + @"Data/SeedData/intervals.json");
             var intervals = JsonSerializer.Deserialize<List<Interval>>(intervalsData);
@@ -67,6 +67,19 @@ public class DataContextSeed
             foreach (var item in intervals)
             {
                 context.Intervals.Add(item);
+            }
+
+            await context.SaveChangesAsync();
+        }
+
+        if (!context.Times.Any())
+        {
+            var timesData = File.ReadAllText(path + @"Data/SeedData/times.json");
+            var times = JsonSerializer.Deserialize<List<Time>>(timesData);
+
+            foreach (var item in times)
+            {
+                context.Times.Add(item);
             }
 
             await context.SaveChangesAsync();
