@@ -2,14 +2,12 @@ using API.Dtos;
 using AutoMapper;
 using Core.Entities;
 
-namespace API.Helpers
+namespace API.Helpers;
+public class MappingProfiles : Profile
 {
-    public class MappingProfiles : Profile
+    public MappingProfiles()
     {
-        public MappingProfiles()
-        {
-            CreateMap<City, CityDto>();
-            CreateMap<Core.Entities.Route, RouteDto>();
-        }
+        CreateMap<City, CityDto>();
+        CreateMap<Core.Entities.Route, RouteDto>();
     }
 }

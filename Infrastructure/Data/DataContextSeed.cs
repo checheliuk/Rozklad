@@ -1,77 +1,75 @@
 using System.Text.Json;
 using Core.Entities;
 
-namespace Infrastructure.Data
+namespace Infrastructure.Data;
+public class DataContextSeed
 {
-    public class DataContextSeed
+    public static async Task SeedAsync(DataContext context, string rootPath)
     {
-        public static async Task SeedAsync(DataContext context, string rootPath)
+        var path = rootPath.Replace("API", "Infrastructure");
+        if (!context.Cites.Any())
         {
-            var path = rootPath.Replace("API", "Infrastructure");
-            if(!context.Cites.Any())
+            var citesData = File.ReadAllText(path + @"Data/SeedData/cites.json");
+            var cites = JsonSerializer.Deserialize<List<City>>(citesData);
+
+            foreach (var item in cites)
             {
-                var citesData = File.ReadAllText(path + @"Data/SeedData/cites.json");
-                var cites = JsonSerializer.Deserialize<List<City>>(citesData);
-
-                foreach (var item in cites)
-                {
-                    context.Cites.Add(item);
-                }
-
-                await context.SaveChangesAsync();
+                context.Cites.Add(item);
             }
 
-            if(!context.Routes.Any())
+            await context.SaveChangesAsync();
+        }
+
+        if (!context.Routes.Any())
+        {
+            var routesData = File.ReadAllText(path + @"Data/SeedData/routes.json");
+            var routes = JsonSerializer.Deserialize<List<Route>>(routesData);
+
+            foreach (var item in routes)
             {
-                var routesData = File.ReadAllText(path + @"Data/SeedData/routes.json");
-                var routes = JsonSerializer.Deserialize<List<Route>>(routesData);
-
-                foreach (var item in routes)
-                {
-                    context.Routes.Add(item);
-                }
-
-                await context.SaveChangesAsync();
+                context.Routes.Add(item);
             }
 
-            if(!context.Stations.Any())
+            await context.SaveChangesAsync();
+        }
+
+        if (!context.Stations.Any())
+        {
+            var stationsData = File.ReadAllText(path + @"Data/SeedData/stations.json");
+            var stations = JsonSerializer.Deserialize<List<Station>>(stationsData);
+
+            foreach (var item in stations)
             {
-                var stationsData = File.ReadAllText(path + @"Data/SeedData/stations.json");
-                var stations = JsonSerializer.Deserialize<List<Station>>(stationsData);
-
-                foreach (var item in stations)
-                {
-                    context.Stations.Add(item);
-                }
-
-                await context.SaveChangesAsync();
+                context.Stations.Add(item);
             }
 
-            if(!context.Schedules.Any())
+            await context.SaveChangesAsync();
+        }
+
+        if(!context.Schedules.Any())
+        {
+            var schedulesData = File.ReadAllText(path + @"Data/SeedData/schedules.json");
+            var schedules = JsonSerializer.Deserialize<List<Schedule>>(schedulesData);
+
+            foreach (var item in schedules)
             {
-                var schedulesData = File.ReadAllText(path + @"Data/SeedData/schedules.json");
-                var schedules = JsonSerializer.Deserialize<List<Schedule>>(schedulesData);
-
-                foreach (var item in schedules)
-                {
-                    context.Schedules.Add(item);
-                }
-
-                await context.SaveChangesAsync();
+                context.Schedules.Add(item);
             }
 
-            if(!context.Intervals.Any())
+            await context.SaveChangesAsync();
+        }
+
+        if(!context.Intervals.Any())
+        {
+            var intervalsData = File.ReadAllText(path + @"Data/SeedData/intervals.json");
+            var intervals = JsonSerializer.Deserialize<List<Interval>>(intervalsData);
+
+            foreach (var item in intervals)
             {
-                var intervalsData = File.ReadAllText(path + @"Data/SeedData/intervals.json");
-                var intervals = JsonSerializer.Deserialize<List<Interval>>(intervalsData);
-
-                foreach (var item in intervals)
-                {
-                    context.Intervals.Add(item);
-                }
-
-                await context.SaveChangesAsync();
+                context.Intervals.Add(item);
             }
+
+            await context.SaveChangesAsync();
         }
     }
 }
