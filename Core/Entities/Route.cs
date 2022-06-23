@@ -13,5 +13,5 @@ public class Route : BaseEntity
     public City City { get; set; }
     public int CityId { get; set; }
     
-    public ICollection<Interval> Intervals { get; set; }
+    public ICollection<Waybill> Waybills { get; set; }
 }

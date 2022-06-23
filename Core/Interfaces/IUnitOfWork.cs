@@ -2,7 +2,7 @@ namespace Core.Interfaces;
 public interface IUnitOfWork
 {
     ICityRepository CityRepository {get; }
-    IIntervalRepository IntervalRepository {get; }
+    IWaybillRepository WaybillRepository {get; }
     IRouteRepository RouteRepository {get; }
     IScheduleRepository ScheduleRepository {get; }
     IStationRepository StationRepository {get; }

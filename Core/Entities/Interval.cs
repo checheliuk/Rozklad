@@ -1,14 +1,11 @@
-using Core.Entities.Enum;
-
-namespace Core.Entities;
-public class Interval : BaseEntity
+namespace Core.Entities
 {
-    public int Order { get; set; }
-    public Day Day { get; set; }
-    public Period Period { get; set; }
-    public Station Station { get; set; }
-    public int StationId { get; set; }
-    public Route Route { get; set; }
-    public int RouteId { get; set; }
-    public ICollection<Time> Times { get; set; }
+    public class Interval : BaseEntity
+    {
+        public TimeSpan? Start { get; set; }
+        public TimeSpan? End { get; set; }
+        public TimeSpan Time { get; set; }
+        public Waybill Waybill { get; set; }
+        public int WaybillId { get; set; }
+    }
 }

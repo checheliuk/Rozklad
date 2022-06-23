@@ -59,6 +59,19 @@ public class DataContextSeed
             await context.SaveChangesAsync();
         }
 
+        if (!context.Waybills.Any())
+        {
+            var waybillsData = File.ReadAllText(path + @"Data/SeedData/waybills.json");
+            var waybills = JsonSerializer.Deserialize<List<Waybill>>(waybillsData);
+
+            foreach (var item in waybills)
+            {
+                context.Waybills.Add(item);
+            }
+
+            await context.SaveChangesAsync();
+        }
+
         if (!context.Intervals.Any())
         {
             var intervalsData = File.ReadAllText(path + @"Data/SeedData/intervals.json");
@@ -67,19 +80,6 @@ public class DataContextSeed
             foreach (var item in intervals)
             {
                 context.Intervals.Add(item);
-            }
-
-            await context.SaveChangesAsync();
-        }
-
-        if (!context.Times.Any())
-        {
-            var timesData = File.ReadAllText(path + @"Data/SeedData/times.json");
-            var times = JsonSerializer.Deserialize<List<Time>>(timesData);
-
-            foreach (var item in times)
-            {
-                context.Times.Add(item);
             }
 
             await context.SaveChangesAsync();

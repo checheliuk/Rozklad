@@ -100,26 +100,21 @@ namespace Infrastructure.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Day")
-                        .HasColumnType("integer");
+                    b.Property<TimeSpan?>("End")
+                        .HasColumnType("interval");
 
-                    b.Property<int>("Order")
-                        .HasColumnType("integer");
+                    b.Property<TimeSpan?>("Start")
+                        .HasColumnType("interval");
 
-                    b.Property<int>("Period")
-                        .HasColumnType("integer");
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("interval");
 
-                    b.Property<int>("RouteId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("StationId")
+                    b.Property<int>("WaybillId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RouteId");
-
-                    b.HasIndex("StationId");
+                    b.HasIndex("WaybillId");
 
                     b.ToTable("Intervals");
                 });
@@ -223,7 +218,7 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("Stations");
                 });
 
-            modelBuilder.Entity("Core.Entities.Time", b =>
+            modelBuilder.Entity("Core.Entities.Waybill", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -231,23 +226,28 @@ namespace Infrastructure.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<TimeSpan?>("End")
-                        .HasColumnType("interval");
-
-                    b.Property<int>("IntervalId")
+                    b.Property<int>("Day")
                         .HasColumnType("integer");
 
-                    b.Property<TimeSpan?>("Start")
-                        .HasColumnType("interval");
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
 
-                    b.Property<TimeSpan>("Value")
-                        .HasColumnType("interval");
+                    b.Property<int>("Period")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("RouteId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StationId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IntervalId");
+                    b.HasIndex("RouteId");
 
-                    b.ToTable("Times");
+                    b.HasIndex("StationId");
+
+                    b.ToTable("Waybills");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -448,21 +448,13 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Interval", b =>
                 {
-                    b.HasOne("Core.Entities.Route", "Route")
+                    b.HasOne("Core.Entities.Waybill", "Waybill")
                         .WithMany("Intervals")
-                        .HasForeignKey("RouteId")
+                        .HasForeignKey("WaybillId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Core.Entities.Station", "Station")
-                        .WithMany("Intervals")
-                        .HasForeignKey("StationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Route");
-
-                    b.Navigation("Station");
+                    b.Navigation("Waybill");
                 });
 
             modelBuilder.Entity("Core.Entities.Route", b =>
@@ -498,15 +490,23 @@ namespace Infrastructure.Data.Migrations
                     b.Navigation("City");
                 });
 
-            modelBuilder.Entity("Core.Entities.Time", b =>
+            modelBuilder.Entity("Core.Entities.Waybill", b =>
                 {
-                    b.HasOne("Core.Entities.Interval", "Interval")
-                        .WithMany("Times")
-                        .HasForeignKey("IntervalId")
+                    b.HasOne("Core.Entities.Route", "Route")
+                        .WithMany("Waybills")
+                        .HasForeignKey("RouteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Interval");
+                    b.HasOne("Core.Entities.Station", "Station")
+                        .WithMany("Waybills")
+                        .HasForeignKey("StationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Route");
+
+                    b.Navigation("Station");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -567,17 +567,17 @@ namespace Infrastructure.Data.Migrations
                     b.Navigation("Stations");
                 });
 
-            modelBuilder.Entity("Core.Entities.Interval", b =>
-                {
-                    b.Navigation("Times");
-                });
-
             modelBuilder.Entity("Core.Entities.Route", b =>
                 {
-                    b.Navigation("Intervals");
+                    b.Navigation("Waybills");
                 });
 
             modelBuilder.Entity("Core.Entities.Station", b =>
+                {
+                    b.Navigation("Waybills");
+                });
+
+            modelBuilder.Entity("Core.Entities.Waybill", b =>
                 {
                     b.Navigation("Intervals");
                 });

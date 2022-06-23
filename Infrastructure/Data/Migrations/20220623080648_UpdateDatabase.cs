@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Infrastructure.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class UpdateDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,6 +57,7 @@ namespace Infrastructure.Data.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: true),
                     Translate = table.Column<string>(type: "text", nullable: true),
+                    Url = table.Column<string>(type: "text", nullable: true),
                     Period = table.Column<int>(type: "integer", nullable: false),
                     Print = table.Column<int>(type: "integer", nullable: false),
                     GoogleMaps = table.Column<string>(type: "text", nullable: true),
@@ -198,7 +199,7 @@ namespace Infrastructure.Data.Migrations
                     Order = table.Column<int>(type: "integer", nullable: false),
                     ReverseId = table.Column<int>(type: "integer", nullable: true),
                     Visible = table.Column<int>(type: "integer", nullable: false),
-                    CityId = table.Column<int>(type: "integer", nullable: true)
+                    CityId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -207,7 +208,8 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_Routes_Cites_CityId",
                         column: x => x.CityId,
                         principalTable: "Cites",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -238,10 +240,10 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Time = table.Column<TimeSpan>(type: "interval", nullable: false),
-                    Period = table.Column<int>(type: "integer", nullable: false),
                     Show = table.Column<int>(type: "integer", nullable: true),
                     Hide = table.Column<int>(type: "integer", nullable: true),
                     Day = table.Column<int>(type: "integer", nullable: false),
+                    Period = table.Column<int>(type: "integer", nullable: false),
                     Information = table.Column<int>(type: "integer", nullable: false),
                     RouteId = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -257,32 +259,52 @@ namespace Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Intervals",
+                name: "Waybills",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Order = table.Column<int>(type: "integer", nullable: false),
-                    Start = table.Column<TimeSpan>(type: "interval", nullable: false),
-                    End = table.Column<TimeSpan>(type: "interval", nullable: false),
-                    Time = table.Column<TimeSpan>(type: "interval", nullable: false),
                     Day = table.Column<int>(type: "integer", nullable: false),
+                    Period = table.Column<int>(type: "integer", nullable: false),
                     StationId = table.Column<int>(type: "integer", nullable: false),
                     RouteId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Intervals", x => x.Id);
+                    table.PrimaryKey("PK_Waybills", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Intervals_Routes_RouteId",
+                        name: "FK_Waybills_Routes_RouteId",
                         column: x => x.RouteId,
                         principalTable: "Routes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Intervals_Stations_StationId",
+                        name: "FK_Waybills_Stations_StationId",
                         column: x => x.StationId,
                         principalTable: "Stations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Intervals",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Start = table.Column<TimeSpan>(type: "interval", nullable: true),
+                    End = table.Column<TimeSpan>(type: "interval", nullable: true),
+                    Time = table.Column<TimeSpan>(type: "interval", nullable: false),
+                    WaybillId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Intervals", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Intervals_Waybills_WaybillId",
+                        column: x => x.WaybillId,
+                        principalTable: "Waybills",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -325,14 +347,9 @@ namespace Infrastructure.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Intervals_RouteId",
+                name: "IX_Intervals_WaybillId",
                 table: "Intervals",
-                column: "RouteId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Intervals_StationId",
-                table: "Intervals",
-                column: "StationId");
+                column: "WaybillId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Routes_CityId",
@@ -348,6 +365,16 @@ namespace Infrastructure.Data.Migrations
                 name: "IX_Stations_CityId",
                 table: "Stations",
                 column: "CityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Waybills_RouteId",
+                table: "Waybills",
+                column: "RouteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Waybills_StationId",
+                table: "Waybills",
+                column: "StationId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -380,10 +407,13 @@ namespace Infrastructure.Data.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Stations");
+                name: "Waybills");
 
             migrationBuilder.DropTable(
                 name: "Routes");
+
+            migrationBuilder.DropTable(
+                name: "Stations");
 
             migrationBuilder.DropTable(
                 name: "Cites");
