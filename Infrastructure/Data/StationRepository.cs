@@ -14,7 +14,7 @@ public class StationRepository : IStationRepository
     
     public void Add(Station station)
     {
-            _context.Stations.Add(station);
+        _context.Stations.Add(station);
     }
 
     public async Task<IReadOnlyList<Station>> GetStationsByCityIdAsync(int id)
