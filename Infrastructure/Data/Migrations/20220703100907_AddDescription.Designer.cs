@@ -12,14 +12,14 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220623080648_UpdateDatabase")]
-    partial class UpdateDatabase
+    [Migration("20220703100907_AddDescription")]
+    partial class AddDescription
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.5")
+                .HasAnnotation("ProductVersion", "6.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -32,31 +32,10 @@ namespace Infrastructure.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("BNote")
-                        .HasColumnType("text");
-
-                    b.Property<string>("CNote")
-                        .HasColumnType("text");
-
-                    b.Property<string>("DNote")
-                        .HasColumnType("text");
-
                     b.Property<DateTime?>("DateLastUpdateSchedules")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("DeviationNote")
-                        .HasColumnType("text");
-
-                    b.Property<string>("EmptySchedule")
-                        .HasColumnType("text");
-
                     b.Property<string>("GoogleMaps")
-                        .HasColumnType("text");
-
-                    b.Property<string>("HNote")
-                        .HasColumnType("text");
-
-                    b.Property<string>("MNote")
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
@@ -71,15 +50,6 @@ namespace Infrastructure.Data.Migrations
                     b.Property<string>("SchedulesFilePath")
                         .HasColumnType("text");
 
-                    b.Property<string>("Star")
-                        .HasColumnType("text");
-
-                    b.Property<string>("TextInDepo")
-                        .HasColumnType("text");
-
-                    b.Property<string>("TextUnderline")
-                        .HasColumnType("text");
-
                     b.Property<string>("Translate")
                         .HasColumnType("text");
 
@@ -92,6 +62,30 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cites");
+                });
+
+            modelBuilder.Entity("Core.Entities.Description", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Information")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("Descriptions");
                 });
 
             modelBuilder.Entity("Core.Entities.Interval", b =>
@@ -448,6 +442,17 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Core.Entities.Description", b =>
+                {
+                    b.HasOne("Core.Entities.City", "City")
+                        .WithMany("Descriptions")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+                });
+
             modelBuilder.Entity("Core.Entities.Interval", b =>
                 {
                     b.HasOne("Core.Entities.Waybill", "Waybill")
@@ -564,6 +569,8 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.City", b =>
                 {
+                    b.Navigation("Descriptions");
+
                     b.Navigation("Routes");
 
                     b.Navigation("Stations");

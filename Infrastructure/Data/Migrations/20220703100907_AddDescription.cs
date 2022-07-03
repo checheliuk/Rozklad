@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Infrastructure.Data.Migrations
 {
-    public partial class UpdateDatabase : Migration
+    public partial class AddDescription : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,16 +61,6 @@ namespace Infrastructure.Data.Migrations
                     Period = table.Column<int>(type: "integer", nullable: false),
                     Print = table.Column<int>(type: "integer", nullable: false),
                     GoogleMaps = table.Column<string>(type: "text", nullable: true),
-                    TextUnderline = table.Column<string>(type: "text", nullable: true),
-                    TextInDepo = table.Column<string>(type: "text", nullable: true),
-                    EmptySchedule = table.Column<string>(type: "text", nullable: true),
-                    DeviationNote = table.Column<string>(type: "text", nullable: true),
-                    Star = table.Column<string>(type: "text", nullable: true),
-                    CNote = table.Column<string>(type: "text", nullable: true),
-                    HNote = table.Column<string>(type: "text", nullable: true),
-                    BNote = table.Column<string>(type: "text", nullable: true),
-                    DNote = table.Column<string>(type: "text", nullable: true),
-                    MNote = table.Column<string>(type: "text", nullable: true),
                     SchedulesFilePath = table.Column<string>(type: "text", nullable: true),
                     DateLastUpdateSchedules = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Visible = table.Column<int>(type: "integer", nullable: false)
@@ -182,6 +172,27 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_AspNetUserTokens_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Descriptions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Text = table.Column<string>(type: "text", nullable: true),
+                    Information = table.Column<int>(type: "integer", nullable: false),
+                    CityId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Descriptions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Descriptions_Cites_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cites",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -347,6 +358,11 @@ namespace Infrastructure.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Descriptions_CityId",
+                table: "Descriptions",
+                column: "CityId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Intervals_WaybillId",
                 table: "Intervals",
                 column: "WaybillId");
@@ -393,6 +409,9 @@ namespace Infrastructure.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Descriptions");
 
             migrationBuilder.DropTable(
                 name: "Intervals");

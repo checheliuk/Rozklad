@@ -4,7 +4,7 @@ namespace Core.Entities.Enum;
 [Flags]
 public enum Information
 {
-    [Description("-")]
+    [Description("None")]
     None = 0,
     [Description("В депо")]
     InDepot = 1,
@@ -21,5 +21,9 @@ public enum Information
     [Description("Д")]
     DNote = 64,
     [Description("М")]
-    MNote = 128
+    MNote = 128,
+    [Description("EmptySchedule")]
+    EmptyScheduleNote = 256,
+    [Description("DeviationNote")]
+    DeviationNote = 512
 }

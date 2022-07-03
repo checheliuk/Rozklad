@@ -1,7 +1,6 @@
 using Core.Interfaces;
 
 namespace Infrastructure.Data;
-
 public class UnitOfWork : IUnitOfWork
 {
     private readonly DataContext _context;
@@ -15,11 +14,11 @@ public class UnitOfWork : IUnitOfWork
     public IScheduleRepository ScheduleRepository => new ScheduleRepository(_context);
     public IStationRepository StationRepository => new StationRepository(_context);
     public IIntervalRepository IntervalRepository => new IntervalRepository(_context);
+    public IDescriptionRepository DescriptionRepository => new DescriptionRepository(_context);
     public async Task<bool> Complete()
     {
         return  await _context.SaveChangesAsync() > 0;
     }
-
     public bool HasChanges()
     {
         return _context.ChangeTracker.HasChanges();

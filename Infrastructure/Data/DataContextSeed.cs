@@ -7,6 +7,7 @@ public class DataContextSeed
     public static async Task SeedAsync(DataContext context, string rootPath)
     {
         var path = rootPath.Replace("API", "Infrastructure");
+
         if (!context.Cites.Any())
         {
             var citesData = File.ReadAllText(path + @"Data/SeedData/cites.json");
@@ -15,6 +16,19 @@ public class DataContextSeed
             foreach (var item in cites)
             {
                 context.Cites.Add(item);
+            }
+
+            await context.SaveChangesAsync();
+        }
+
+        if (!context.Descriptions.Any())
+        {
+            var descriptionsData = File.ReadAllText(path + @"Data/SeedData/descriptions.json");
+            var descriptions = JsonSerializer.Deserialize<List<Description>>(descriptionsData);
+
+            foreach (var item in descriptions)
+            {
+                context.Descriptions.Add(item);
             }
 
             await context.SaveChangesAsync();

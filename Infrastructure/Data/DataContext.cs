@@ -15,4 +15,5 @@ public class DataContext : IdentityDbContext
     public DbSet<Schedule> Schedules { get; set; }
     public DbSet<Waybill> Waybills { get; set; }
     public DbSet<Interval> Intervals { get; set; }
+    public DbSet<Description> Descriptions { get; set; }
 }

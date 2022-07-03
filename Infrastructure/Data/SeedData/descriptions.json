@@ -1,0 +1,122 @@
+[
+    {
+        "Id": 1,
+        "Text": "прямує в депо",
+        "Information": 1,
+        "CityId": 1
+    },
+    {
+        "Id": 2,
+        "Text": "низькополі",
+        "Information": 2,
+        "CityId": 1
+    },
+    {
+        "Id": 3,
+        "Text": "прямує до Барського шосе",
+        "Information": 4,
+        "CityId": 1
+    },
+    {
+        "Id": 4,
+        "Text": "до 'Майдан Небесної Сотні'",
+        "Information": 8,
+        "CityId": 1
+    },
+    {
+        "Id": 5,
+        "Text": "до лікарні Пирогова",
+        "Information": 16,
+        "CityId": 1
+    },
+    {
+        "Id": 6,
+        "Text": "прямує до ТК Вишенька",
+        "Information": 32,
+        "CityId": 1
+    },
+    {
+        "Id": 7,
+        "Text": "до залізничного вокзалу",
+        "Information": 64,
+        "CityId": 1
+    },
+    {
+        "Id": 8,
+        "Text": "до Меморіалу Визволення",
+        "Information": 128,
+        "CityId": 1
+    },
+    {
+        "Id": 9,
+        "Text": "Маршрут не працює в ці дні",
+        "Information": 256,
+        "CityId": 1
+    },
+    {
+        "Id": 10,
+        "Text": "Можливе відхилення: 1-2 хв.",
+        "Information": 512,
+        "CityId": 1
+    },
+    {
+        "Id": 11,
+        "Text": "прямує в депо",
+        "Information": 1,
+        "CityId": 2
+    },
+    {
+        "Id": 12,
+        "Text": "низькополі",
+        "Information": 2,
+        "CityId": 2
+    },
+    {
+        "Id": 13,
+        "Text": "прямує до Барського шосе",
+        "Information": 4,
+        "CityId": 2
+    },
+    {
+        "Id": 14,
+        "Text": "до 'Майдан Небесної Сотні'",
+        "Information": 8,
+        "CityId": 2
+    },
+    {
+        "Id": 15,
+        "Text": "до лікарні Пирогова",
+        "Information": 16,
+        "CityId": 2
+    },
+    {
+        "Id": 16,
+        "Text": "прямує до ТК Вишенька",
+        "Information": 32,
+        "CityId": 2
+    },
+    {
+        "Id": 17,
+        "Text": "до залізничного вокзалу",
+        "Information": 64,
+        "CityId": 2
+    },
+    {
+        "Id": 18,
+        "Text": "до Меморіалу Визволення",
+        "Information": 128,
+        "CityId": 2
+    },
+    {
+        "Id": 19,
+        "Text": "Маршрут не працює в ці дні",
+        "Information": 256,
+        "CityId": 2
+    },
+    {
+        "Id": 20,
+        "Text": "Можливе відхилення: 1-2 хв.",
+        "Information": 512,
+        "CityId": 2
+    }
+]
