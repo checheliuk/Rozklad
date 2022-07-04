@@ -7,5 +7,5 @@ public interface IScheduleRepository
     void Add(Schedule schedule);
     void Update(Schedule schedule);
     void Delete(Schedule schedule);
-    Task<IReadOnlyList<Schedule>> GetSchedulesByRouteIdAsync(int id, Period period = Period.None, Day day = Day.None);
+    Task<IReadOnlyList<Schedule>> GetSchedulesByRouteIdAsync(int id, Period period = Period.None, Day day = Day.None, bool noTracking = true);
 }

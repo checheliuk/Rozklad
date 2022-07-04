@@ -14,12 +14,12 @@ public class DescriptionRepository : IDescriptionRepository
     {
         _context.Descriptions.Add(description);
     }
-
-    public async Task<IReadOnlyList<Description>> GetDescriptionsByCityIdAsync(int id)
+    public async Task<IReadOnlyList<Description>> GetDescriptionsByCityIdAsync(int id, bool noTracking)
     {
-        return await _context.Descriptions.Where(x => x.CityId == id).ToListAsync();
+        var descriptions = _context.Descriptions.Where(x => x.CityId == id);
+        if (noTracking) descriptions = descriptions.AsNoTracking();
+        return await descriptions.ToListAsync();
     }
-
     public void Update(Description description)
     {
         _context.Entry(description).State = EntityState.Modified;

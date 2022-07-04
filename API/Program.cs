@@ -1,5 +1,6 @@
 using API.Extensions;
 using API.Helpers;
+using API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -19,6 +20,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 app.UseCors(policy => policy.AllowAnyHeader()
     .AllowAnyMethod()

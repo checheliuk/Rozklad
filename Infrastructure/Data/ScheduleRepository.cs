@@ -12,26 +12,22 @@ public class ScheduleRepository : IScheduleRepository
     {
         _context = context;
     }
-
     public void Add(Schedule schedule)
     {
         _context.Schedules.Add(schedule);
     }
-
     public void Delete(Schedule schedule)
     {
-            _context.Schedules.Remove(schedule);
+        _context.Schedules.Remove(schedule);
     }
-
-    public async Task<IReadOnlyList<Schedule>> GetSchedulesByRouteIdAsync(int id, Period period = Period.None, Day day = Day.None)
+    public async Task<IReadOnlyList<Schedule>> GetSchedulesByRouteIdAsync(int id, Period period, Day day, bool noTracking)
     {
-        return await _context.Schedules
-            .Where(x => x.RouteId == id 
-                && period == Period.None ? true : x.Period == period
-                && day == Day.None ? true : x.Day == day)
-            .ToListAsync();
+        var schedules = _context.Schedules.Where(x => x.RouteId == id);
+        if (!(period ==  Period.None)) schedules = schedules.Where(p => p.Period == period);
+        if (!(day == Day.None)) schedules = schedules.Where(d => d.Day == day);
+        if (noTracking) schedules = schedules.AsNoTracking();
+        return await schedules.ToListAsync();
     }
-
     public void Update(Schedule schedule)
     {
         _context.Entry(schedule).State = EntityState.Modified;

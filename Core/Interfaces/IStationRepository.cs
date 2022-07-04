@@ -5,5 +5,5 @@ public interface IStationRepository
 {
     void Add(Station station);
     void Update(Station station);
-    Task<IReadOnlyList<Station>> GetStationsByCityIdAsync(int id);
+    Task<IReadOnlyList<Station>> GetStationsByCityIdAsync(int id, bool noTracking = true);
 }

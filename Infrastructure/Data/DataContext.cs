@@ -8,7 +8,6 @@ public class DataContext : IdentityDbContext
     public DataContext(DbContextOptions options) : base(options)
     {
     }
-
     public DbSet<City> Cites { get; set; }
     public DbSet<Route> Routes { get; set; }
     public DbSet<Station> Stations { get; set; }

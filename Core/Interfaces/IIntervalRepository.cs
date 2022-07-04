@@ -5,5 +5,5 @@ public interface IIntervalRepository
 {
     void Add(Interval interval);
     void Update(Interval interval);
-    Task<IReadOnlyList<Interval>> GetIntervalsByWaybillIdAsync(int id);
+    Task<IReadOnlyList<Interval>> GetIntervalsByWaybillIdAsync(int id, bool noTracking = true);
 }

@@ -14,14 +14,12 @@ public class IntervalRepository : IIntervalRepository
     {
         _context.Intervals.Add(interval);
     }
-
-    public async Task<IReadOnlyList<Interval>> GetIntervalsByWaybillIdAsync(int id)
+    public async Task<IReadOnlyList<Interval>> GetIntervalsByWaybillIdAsync(int id, bool noTracking)
     {
-        return await _context.Intervals
-            .Where(x => x.WaybillId == id) 
-            .ToListAsync();
+        var intervals = _context.Intervals.Where(x => x.WaybillId == id);
+        if (noTracking) intervals = intervals.AsNoTracking();
+        return await intervals.ToListAsync();
     }
-
     public void Update(Interval interval)
     {
         _context.Entry(interval).State = EntityState.Modified;

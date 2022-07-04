@@ -11,17 +11,16 @@ public class StationRepository : IStationRepository
     {
         _context = context;
     }
-    
     public void Add(Station station)
     {
         _context.Stations.Add(station);
     }
-
-    public async Task<IReadOnlyList<Station>> GetStationsByCityIdAsync(int id)
+    public async Task<IReadOnlyList<Station>> GetStationsByCityIdAsync(int id, bool noTracking)
     {
-        return await _context.Stations.Where(x => x.CityId == id).ToListAsync();
+        var stations = _context.Stations.Where(x => x.CityId == id);
+        if (noTracking) stations = stations.AsNoTracking();
+        return await stations.ToListAsync();
     }
-
     public void Update(Station station)
     {
         _context.Entry(station).State = EntityState.Modified;

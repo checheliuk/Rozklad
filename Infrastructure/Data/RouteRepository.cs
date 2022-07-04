@@ -11,19 +11,17 @@ public class RouteRepository : IRouteRepository
     {
         _context = context;
     }
-
     public void Add(Route route)
     {
         _context.Routes.Add(route);
     }
-
-    public async Task<IReadOnlyList<Route>> GetRoutesByCityIdAsync(int id, Visible type = Visible.None)
+    public async Task<IReadOnlyList<Route>> GetRoutesByCityIdAsync(int id, Visible type, bool noTracking)
     {
-        return await _context.Routes
-            .Where(x => x.CityId == id && type == Visible.None ? true : x.Visible == type)
-            .ToListAsync();
+        var routes = _context.Routes.AsQueryable();
+        if (!(type == Visible.None)) routes = routes.Where(t => t.Visible == type);
+        if (noTracking) routes = routes.AsNoTracking();
+        return await routes.ToListAsync();
     }
-
     public void Update(Route route)
     {
         _context.Entry(route).State = EntityState.Modified;
