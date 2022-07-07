@@ -22,9 +22,12 @@ public class CityRepository : ICityRepository
         if (noTracking) cites = cites.AsNoTracking();
         return await cites.ToListAsync();
     }
-    public Task<City> GetCityByIdAsync(int id, Visible type, bool noTracking)
+    public async Task<City> GetCityByIdAsync(int id, Visible type, bool noTracking)
     {
-        throw new NotImplementedException();
+       var city = _context.Cites.AsQueryable();
+       if (!(type == Visible.None)) city = city.Where(t => t.Visible == type);
+        if (noTracking) city = city.AsNoTracking();
+        return await city.FirstOrDefaultAsync(x => x.Id == id);
     }
     public async Task<City> GetCityByUrlAsync(string url, Visible type, bool noTracking)
     {

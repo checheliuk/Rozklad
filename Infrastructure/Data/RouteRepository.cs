@@ -17,7 +17,7 @@ public class RouteRepository : IRouteRepository
     }
     public async Task<IReadOnlyList<Route>> GetRoutesByCityIdAsync(int id, Visible type, bool noTracking)
     {
-        var routes = _context.Routes.AsQueryable();
+        var routes = _context.Routes.Where(x => x.CityId == id);
         if (!(type == Visible.None)) routes = routes.Where(t => t.Visible == type);
         if (noTracking) routes = routes.AsNoTracking();
         return await routes.ToListAsync();
